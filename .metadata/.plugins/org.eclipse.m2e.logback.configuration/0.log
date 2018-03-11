@@ -1,0 +1,25 @@
+2018-03-11 17:05:05,343 [Worker-16] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: aaaflfl:aaaflfl:0.0.1-SNAPSHOT @ C:\Program Files (x86)\EasyPHP-Devserver-17\eds-www\sistemasphp\AAFLF\aaaflfl\pom.xml.
+2018-03-11 17:05:08,137 [Worker-16] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /aaaflfl/src/main/java
+2018-03-11 17:05:08,140 [Worker-16] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /aaaflfl/src/main/resources
+2018-03-11 17:05:08,141 [Worker-16] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /aaaflfl/src/test/java
+2018-03-11 17:05:08,141 [Worker-16] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /aaaflfl/src/test/resources
+2018-03-11 17:05:11,453 [Worker-16] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-03-11 17:05:11,497 [Worker-16] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-03-11 17:05:11,501 [Worker-16] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-03-11 17:05:11,507 [Worker-16] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-03-11 17:06:10,539 [Worker-18] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: aaaflfl:aaaflfl:0.0.1-SNAPSHOT @ C:\Program Files (x86)\EasyPHP-Devserver-17\eds-www\sistemasphp\AAFLF\aaaflfl\pom.xml.
+2018-03-11 17:06:11,166 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-03-11 17:06:11,196 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-03-11 17:06:11,200 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-03-11 17:06:11,201 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-03-11 17:06:32,292 [Worker-16] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update started
+2018-03-11 17:06:33,810 [Worker-16] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: aaaflfl:aaaflfl:0.0.1-SNAPSHOT @ C:\Program Files (x86)\EasyPHP-Devserver-17\eds-www\sistemasphp\AAFLF\aaaflfl\pom.xml.
+2018-03-11 17:06:34,281 [Worker-16] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /aaaflfl/src/main/java
+2018-03-11 17:06:34,281 [Worker-16] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /aaaflfl/src/main/resources
+2018-03-11 17:06:34,324 [Worker-16] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /aaaflfl/src/test/java
+2018-03-11 17:06:34,325 [Worker-16] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /aaaflfl/src/test/resources
+2018-03-11 17:06:35,235 [Worker-16] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update completed: 2 sec
+2018-03-11 17:06:35,481 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-03-11 17:06:35,483 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-03-11 17:06:35,487 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-03-11 17:06:35,502 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource

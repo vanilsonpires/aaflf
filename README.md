@@ -1,29 +1,23 @@
 # README #
 
-This README would normally document whatever steps are necessary to get your application up and running.
+Este é um trabalho acadêmico desenvolvido para fins de estudo de métodos de ordenamento:
 
-### What is this repository for? ###
+	Insertion-Sort
+	Merge-Sort
+	Selection-Sort
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+### Faculdade Lourenço Filho - FLF ###
 
-### How do I get set up? ###
-
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+* Sistemas de Informações
+* Análise de Algorítmos
+* 1.0
+* [Learn Markdown](https://docs.google.com/viewer?a=v&pid=forums&srcid=MDE1ODA1NDg1MDc1NTQ5MTcxNzEBMTE5NjMwODE4NTY4ODE2NDgxMjYBVlZaWEI5ZU9CZ0FKATAuMQEBdjI&authuser=0)
 
 ### Contribution guidelines ###
 
-* Writing tests
-* Code review
-* Other guidelines
+* Vanilson Pires Mat. 3114132
 
 ### Who do I talk to? ###
 
 * Repo owner or admin
-* Other community or team contact
+* vanilsonpires@yahoo.com.br
