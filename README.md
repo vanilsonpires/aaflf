@@ -16,6 +16,8 @@ Este é um trabalho acadêmico desenvolvido para fins de estudo de métodos de o
 ### Contribution guidelines ###
 
 * Vanilson Pires Mat. 3114132
+* Victor Vieira Maciel
+* Juciel Carvalho de Moura
 
 ### Who do I talk to? ###
 
