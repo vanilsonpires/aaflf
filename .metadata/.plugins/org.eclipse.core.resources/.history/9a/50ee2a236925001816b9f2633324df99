@@ -1,0 +1,33 @@
+/**
+ * @author Vanilson Pires
+ * 11 de mar de 2018 2018-03-11
+ *
+ */
+package gui;
+
+import java.awt.BorderLayout;
+
+import javax.swing.JFrame;
+
+/**
+ * @author Vanilson Pires
+ * 11 de mar de 2018 2018-03-11
+ *
+ */
+@SuppressWarnings("serial")
+public class Gui extends JFrame{
+	
+	/**
+	 * @author Vanilson Pires
+	 * @date 2018-03-11
+	 */
+	public Gui() {
+		super("AAFLF"); // Add titulo do JFrame
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //Setado comando default para encerrar o programa quando fechar
+		this.setExtendedState(MAXIMIZED_BOTH); // Maximizar
+		this.setLocationRelativeTo(null); // Centralizar JFrame no centro da tela
+		this.setLayout(new BorderLayout()); // Seta um Layout
+		setVisible(true);
+	}
+
+}

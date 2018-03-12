@@ -1,0 +1,30 @@
+/**
+ * @author Vanilson Pires
+ * 11 de mar de 2018 2018-03-11
+ *
+ */
+package gui;
+
+import javax.swing.JFrame;
+
+/**
+ * @author Vanilson Pires
+ * 11 de mar de 2018 2018-03-11
+ *
+ */
+@SuppressWarnings("serial")
+public class Gui extends JFrame{
+	
+	/**
+	 * @author Vanilson Pires
+	 * @date 2018-02-28
+	 */
+	public Gui() {
+		super("Tetris");
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setExtendedState(MAXIMIZED_BOTH);
+		setVisible(true);
+		this.setLocationRelativeTo(null);
+	}
+
+}

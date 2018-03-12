@@ -1,0 +1,28 @@
+/**
+ * @author Vanilson Pires
+ * 11 de mar de 2018 2018-03-11
+ *
+ */
+package gui;
+
+import javax.swing.JPanel;
+
+/**
+ * @author Vanilson Pires
+ * 11 de mar de 2018 2018-03-11
+ * Representa o painel do topo da aplicação
+ */
+@SuppressWarnings("serial")
+public class PanelTopo extends JPanel{
+	
+	/**
+	 * Construtor da classe
+	 * @author Vanilson Pires
+	 * 11 de mar de 2018 2018-03-11
+	 *
+	 */
+	public PanelTopo() {
+		// TODO Auto-generated constructor stub
+	}
+
+}
