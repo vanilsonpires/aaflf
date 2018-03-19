@@ -6,7 +6,11 @@
 package gui;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.Font;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.UIManager;
 
 /**
  * @author Vanilson Pires
@@ -16,20 +20,45 @@ import javax.swing.JFrame;
 @SuppressWarnings("serial")
 public class Gui extends JFrame{
 	
+	public static enum Algoritmo{
+		Insertion_Sort,
+		Merge_Sort,
+		Selection_Sort
+	}
+	
+	public static enum TypeDado{
+		String,
+		Integer,
+		Date
+	}
+	
+	public static enum Ordenacao{
+		CRESCENTE, DECRESCENTE
+	}
+	
 	/**
 	 * Construtor da interface principal
 	 * @author Vanilson Pires
 	 * @date 2018-03-11
 	 */
 	public Gui() {
+		
 		super("AAFLF"); // Add titulo do JFrame
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //Setado comando default para encerrar o programa quando fechar
 		this.setExtendedState(MAXIMIZED_BOTH); // Maximizar
 		this.setLocationRelativeTo(null); // Centralizar JFrame no centro da tela
 		this.setLayout(new BorderLayout()); // Seta um Layout
-		this.add(new PanelTopo(),BorderLayout.NORTH); // Add o painel no topo
-		this.add(new PanelCenter(), BorderLayout.CENTER); // Add painel do centro
-		this.add(new PainelBotton(), BorderLayout.SOUTH); // Add painel do fundo
+		this.add(new PanelCabecalho(),BorderLayout.NORTH); // Add o painel no topo
+		JPanel jPanel = new JPanel();
+		jPanel.setLayout(new BorderLayout());
+		jPanel.add(new PanelCenter(), BorderLayout.CENTER); // Add painel do centro
+		jPanel.add(new PainelTopo(), BorderLayout.NORTH); // Add painel do fundo
+		this.add(jPanel, BorderLayout.CENTER);
+		this.add(new PainelBotton(), BorderLayout.SOUTH);
+		this.setMinimumSize(new Dimension(1024, 600));
+		
+		UIManager.put("TitledBorder.font", new Font("Arial", Font.BOLD, 17));
+		
 		setVisible(true); // Mostrar JFrame
 	}
 

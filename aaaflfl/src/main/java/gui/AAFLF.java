@@ -21,5 +21,4 @@ public class AAFLF {
 	public static void main(String[] args) {
 		new Gui();
 	}
-
 }

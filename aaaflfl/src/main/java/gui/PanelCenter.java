@@ -5,9 +5,18 @@
  */
 package gui;
 
+import java.awt.BorderLayout;
 import java.awt.GridLayout;
 
+import javax.swing.BorderFactory;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.border.Border;
+import javax.swing.border.CompoundBorder;
+import javax.swing.border.EmptyBorder;
+
+import nucleo.Engine;
 
 /**
  * @author Vanilson Pires
@@ -24,7 +33,31 @@ public class PanelCenter extends JPanel{
 	 *
 	 */
 	public PanelCenter() {
-		this.setLayout(new GridLayout(1, 3));
+		this.setLayout(new GridLayout(1, 2, 10, 10));
+		this.add(createPanelEsquerdo());
+		this.add(createPanelDireito());
+		Border border = getBorder();
+		Border margin = new EmptyBorder(10,10,10,10);
+		setBorder(new CompoundBorder(border, margin));
 	}
-
+	
+	private JPanel createPanelEsquerdo(){
+		JPanel jPanel = new JPanel();
+		jPanel.setLayout(new BorderLayout());
+		jPanel.setBorder(BorderFactory.createTitledBorder("Dados de Entrada:"));	
+		JTable jTable = new JTable(Engine.getInstance().getListaEsquerda());
+		jTable.setTableHeader(null);
+		jPanel.add(new JScrollPane(jTable) );
+		return jPanel;
+	}
+	
+	private JPanel createPanelDireito(){
+		JPanel jPanel = new JPanel();
+		jPanel.setLayout(new BorderLayout());
+		jPanel.setBorder(BorderFactory.createTitledBorder("Dados de Saida:"));
+		JTable jTable = new JTable(Engine.getInstance().getListaDireita());
+		jTable.setTableHeader(null);
+		jPanel.add(new JScrollPane(jTable));
+		return jPanel;
+	}
 }
