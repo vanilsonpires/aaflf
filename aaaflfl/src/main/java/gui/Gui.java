@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.UIManager;
 
 /**
+ * Classe principal da interface
  * @author Vanilson Pires
  * 11 de mar de 2018 2018-03-11
  *
@@ -20,18 +21,36 @@ import javax.swing.UIManager;
 @SuppressWarnings("serial")
 public class Gui extends JFrame{
 	
+	/**
+	 * Enum que representa os algorítmos implementados
+	 * @author Vanilson Pires
+	 * 19 de mar de 2018 2018-03-19
+	 *
+	 */
 	public static enum Algoritmo{
 		Insertion_Sort,
 		Merge_Sort,
 		Selection_Sort
 	}
 	
+	/**
+	 * Enum que representa os tipos de dados para possível leitura implementados
+	 * @author Vanilson Pires
+	 * 19 de mar de 2018 2018-03-19
+	 *
+	 */
 	public static enum TypeDado{
 		String,
 		Integer,
 		Date
 	}
 	
+	/**
+	 * Enum que representa os tipos de ordenação disponível
+	 * @author Vanilson Pires
+	 * 19 de mar de 2018 2018-03-19
+	 *
+	 */
 	public static enum Ordenacao{
 		CRESCENTE, DECRESCENTE
 	}
@@ -50,7 +69,7 @@ public class Gui extends JFrame{
 		this.setLayout(new BorderLayout()); // Seta um Layout
 		this.add(new PanelCabecalho(),BorderLayout.NORTH); // Add o painel no topo
 		JPanel jPanel = new JPanel();
-		jPanel.setLayout(new BorderLayout());
+		jPanel.setLayout(new BorderLayout()); //Seta o layout
 		jPanel.add(new PanelCenter(), BorderLayout.CENTER); // Add painel do centro
 		jPanel.add(new PainelTopo(), BorderLayout.NORTH); // Add painel do fundo
 		this.add(jPanel, BorderLayout.CENTER);

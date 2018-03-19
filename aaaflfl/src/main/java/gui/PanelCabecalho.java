@@ -17,9 +17,9 @@ import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 
 /**
+ * Representa o painel do topo da aplicação
  * @author Vanilson Pires
  * 11 de mar de 2018 2018-03-11
- * Representa o painel do topo da aplicação
  */
 @SuppressWarnings("serial")
 public class PanelCabecalho extends JPanel{
@@ -36,6 +36,12 @@ public class PanelCabecalho extends JPanel{
 		addTitle();
 	}
 	
+	/**
+	 * Método que adiciona a logo
+	 * @author Vanilson Pires
+	 * 19 de mar de 2018 2018-03-19
+	 *
+	 */
 	private void addLogo(){
 		JLabel icon = new JLabel(new ImageIcon(getClass().getResource("logo.png")));
 		Border border = icon.getBorder();
@@ -45,6 +51,12 @@ public class PanelCabecalho extends JPanel{
 		add(icon,BorderLayout.LINE_START);
 	}
 	
+	/**
+	 * Método que adiciona o título
+	 * @author Vanilson Pires
+	 * 19 de mar de 2018 2018-03-19
+	 *
+	 */
 	private void addTitle(){
 		JLabel title = new JLabel("Métodos de Ordenamento");
 		Border border = title.getBorder();

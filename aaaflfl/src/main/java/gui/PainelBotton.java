@@ -15,6 +15,7 @@ import javax.swing.JPanel;
 import nucleo.Engine;
 
 /**
+ * Classe que representa o painel do fundo
  * @author Vanilson Pires
  * 18 de mar de 2018 2018-03-18
  *
@@ -23,26 +24,27 @@ import nucleo.Engine;
 public class PainelBotton extends JPanel {
 	
 	/**
+	 * Construtor da classe
 	 * @author Vanilson Pires
 	 * 18 de mar de 2018 2018-03-18O
 	 *
 	 */
 	public PainelBotton() {
 		
-		this.setLayout(new BorderLayout());
-		JPanel panel = new JPanel();
-		panel.setLayout(new FlowLayout(FlowLayout.CENTER));
-		JLabel jLabel = new JLabel("Cronômetro: ");
-		jLabel.setFont(new Font("Arial", Font.PLAIN, 22));
-		panel.add(jLabel);		
-		panel.add(Engine.getInstance().getCronometroLabel());
-		this.add(panel, BorderLayout.NORTH);
+		this.setLayout(new BorderLayout());//Seta o layout deste painel
+		JPanel panel = new JPanel(); //Instancia um novo painel
+		panel.setLayout(new FlowLayout(FlowLayout.CENTER)); //Altera o layout do painel anterior para flow 
+		JLabel jLabel = new JLabel("Cronômetro: ");// Instancia uma label
+		jLabel.setFont(new Font("Arial", Font.PLAIN, 22));//Altera a fonte
+		panel.add(jLabel); //Adiciona a label ao painel
+		panel.add(Engine.getInstance().getCronometroLabel()); //Pega a label do cronometro na engine e add
+		this.add(panel, BorderLayout.NORTH); //coloca este painel no topo
 		
-		JPanel panelSul = new JPanel();
-		panelSul.setLayout(new FlowLayout(FlowLayout.CENTER));
-		panelSul.add(Engine.getInstance().getStatusBar());
-		panelSul.add(Engine.getInstance().getProgressBar());
-		this.add(panelSul,BorderLayout.SOUTH);
+		JPanel panelSul = new JPanel();//Instancia um novo painel
+		panelSul.setLayout(new FlowLayout(FlowLayout.CENTER)); //Altera o layout
+		panelSul.add(Engine.getInstance().getStatusBar());// Pega o status da barra de progresso da engine e add
+		panelSul.add(Engine.getInstance().getProgressBar()); //Adiciona a barra de progresso da engine
+		this.add(panelSul,BorderLayout.SOUTH);//Adiciona o painel no fim
 		
 	}
 }

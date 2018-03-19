@@ -19,9 +19,9 @@ import javax.swing.border.EmptyBorder;
 import nucleo.Engine;
 
 /**
+ * Representa o painel central da aplicação
  * @author Vanilson Pires
  * 11 de mar de 2018 2018-03-11
- * Representa o painel central da aplicação
  */
 @SuppressWarnings("serial")
 public class PanelCenter extends JPanel{
@@ -41,23 +41,37 @@ public class PanelCenter extends JPanel{
 		setBorder(new CompoundBorder(border, margin));
 	}
 	
+	/**
+	 * Método que cria o painel esquerdo
+	 * @author Vanilson Pires
+	 * 19 de mar de 2018 2018-03-19
+	 *
+	 * @return
+	 */
 	private JPanel createPanelEsquerdo(){
-		JPanel jPanel = new JPanel();
-		jPanel.setLayout(new BorderLayout());
-		jPanel.setBorder(BorderFactory.createTitledBorder("Dados de Entrada:"));	
-		JTable jTable = new JTable(Engine.getInstance().getListaEsquerda());
-		jTable.setTableHeader(null);
-		jPanel.add(new JScrollPane(jTable) );
-		return jPanel;
+		JPanel jPanel = new JPanel();//Instancia um painel
+		jPanel.setLayout(new BorderLayout());//Adiciona seu layout
+		jPanel.setBorder(BorderFactory.createTitledBorder("Dados de Entrada:"));//Cria uma borda
+		JTable jTable = new JTable(Engine.getInstance().getListaEsquerda()); //Instancia uma tabela com os dados da engine
+		jTable.setTableHeader(null);//Retira o header da tabela
+		jPanel.add(new JScrollPane(jTable) );//Adiciona rolagem se for necessário
+		return jPanel;//retorna
 	}
 	
+	/**
+	 * Método que cria o painel direito
+	 * @author Vanilson Pires
+	 * 19 de mar de 2018 2018-03-19
+	 *
+	 * @return
+	 */
 	private JPanel createPanelDireito(){
-		JPanel jPanel = new JPanel();
-		jPanel.setLayout(new BorderLayout());
-		jPanel.setBorder(BorderFactory.createTitledBorder("Dados de Saida:"));
-		JTable jTable = new JTable(Engine.getInstance().getListaDireita());
-		jTable.setTableHeader(null);
-		jPanel.add(new JScrollPane(jTable));
-		return jPanel;
+		JPanel jPanel = new JPanel();//Instancia um painel
+		jPanel.setLayout(new BorderLayout());//Adiciona seu layout
+		jPanel.setBorder(BorderFactory.createTitledBorder("Dados de Saida:"));//Cria uma borda
+		JTable jTable = new JTable(Engine.getInstance().getListaDireita()); //Instancia uma tabela com os dados da engine
+		jTable.setTableHeader(null);//Retira o header da tabela
+		jPanel.add(new JScrollPane(jTable));//Adiciona rolagem se for necessário
+		return jPanel;//retorna
 	}
 }

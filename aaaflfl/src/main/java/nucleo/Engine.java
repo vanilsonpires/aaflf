@@ -31,10 +31,11 @@ import gui.util.Cronometro;
 import gui.util.TableModel;
 
 /**
+ * Representa o motor de ordenações
  * @author Vanilson Pires 18 de mar de 2018 2018-03-18
  *
  */
-public class Engine extends Observable implements Observer {
+public class Engine implements Observer {
 
 	private JLabel cronometroLabel;
 	private Cronometro cronometro;
@@ -51,6 +52,7 @@ public class Engine extends Observable implements Observer {
 	private TableModel listaDireita;
 
 	/**
+	 * Construtor padrão
 	 * @author Vanilson Pires 18 de mar de 2018 2018-03-18
 	 *
 	 */
@@ -66,6 +68,13 @@ public class Engine extends Observable implements Observer {
 		listaEsquerda = new TableModel(new ArrayList<>());
 	}
 
+	/**
+	 * Retorna a instância do motor
+	 * @author Vanilson Pires
+	 * 19 de mar de 2018 2018-03-19
+	 *
+	 * @return
+	 */
 	public static Engine getInstance() {
 
 		if (engine == null)
@@ -74,30 +83,31 @@ public class Engine extends Observable implements Observer {
 		return engine;
 	}
 
+	/**
+	 * Inicializa os processos
+	 * @author Vanilson Pires
+	 * 19 de mar de 2018 2018-03-19
+	 *
+	 * @throws Exception
+	 */
 	public void start() throws Exception {
 		
 		try {
+			//Starta o cronômetro
 			cronometro.start();
 			
 			//Inicia a leitura do arquivo..
 			lerArquivo();
 			
+			//Swith do tipo de algorítmo
 			switch (algoritmo) {
 
 			case Insertion_Sort:
 				orderInsertionSort();
 				break;
 
-			case Merge_Sort:
-				orderMergeSort();
-				break;
-
-			case Selection_Sort:
-				orderSelectonSort();
-				break;
-
 			default:
-				break;
+				throw new Exception(algoritmo.name()+" não implementado") ;
 			}
 			
 			cronometro.stop();
@@ -107,30 +117,56 @@ public class Engine extends Observable implements Observer {
 		}
 	}
 
+	/**
+	 * Implementação do InsertionSort
+	 * @author Vanilson Pires
+	 * 19 de mar de 2018 2018-03-19
+	 *
+	 * @throws Exception
+	 */
 	private void orderInsertionSort() throws Exception {
 		
+		//Altera o texto do status bar
 		statusBar.setText("Processando...");
 		
+		//Carrega a lista de dados
 		listaDireita.addAll(listaEsquerda.getDados());
 		
+		//Inicia o laço
 		for (int index = 0; index < listaDireita.getDados().size(); index++)  {
+			
+			//Pega o objeto da laçada atual
 			String a = listaDireita.getDados().get(index);  
+			
+			//Inicia a verificação dos demais objetos da lista
 		    for (int j = index - 1; j >= 0 && compareTo(listaDireita.getDados().get(j), a); j--) {
+		    	
+		    	//Atualiza os objeto na lista
 		    	listaDireita.getDados().set((j + 1), listaDireita.getDados().get(j));  
 		    	listaDireita.getDados().set(j, a);  
 		    }
+		    
+		    //Altera a porcentagem de progresso
 		    statusBar.setText(new DecimalFormat("##.##").format((((double)index/(double)listaDireita.getDados().size())*100.0))+"%");
+		    
+		    //Atualiza a lista
 		    listaDireita.update();
+		    
+		    //Atualiza o progressBar
+		    progressBar.setValue((int)(((double)index/(double)listaDireita.getDados().size())*100.0));
 		}
 		
+		//Finaliza o progressBar
+		progressBar.setValue(100);
+		
+		//Atualiza o status do progressBar
 		statusBar.setText("Pronto");
 	}
 	
 	/**
-	 * Retorna a ordenação do dado
+	 * Realiza a comparação dos dados
 	 * @author Vanilson Pires
 	 * 18 de mar de 2018 2018-03-18
-	 *
 	 * @param a
 	 * @param b
 	 * @return
@@ -141,10 +177,12 @@ public class Engine extends Observable implements Observer {
 		//Se for crescente
 		if(ordenacao== Ordenacao.CRESCENTE){
 			
+			//Faz a ordenação de acordo com o tipo de dado
 			switch (typeDado) {
 
 			case String:
 				
+				//Compara as strings
 				int resultCompacao = a.compareTo(b);
 				
 				if(resultCompacao==1){
@@ -174,8 +212,8 @@ public class Engine extends Observable implements Observer {
 				
 				SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 				
-				Date aD = format.parse( a.trim() );
-				Date bD = format.parse( b.trim() );
+				Date aD = format.parse( a.trim() ); //a como date
+				Date bD = format.parse( b.trim() ); //b como date
 				
 				resultCompacao = aD.compareTo(bD);
 				
@@ -245,14 +283,6 @@ public class Engine extends Observable implements Observer {
 			}
 		}
 		
-	}
-
-	private void orderMergeSort() {
-
-	}
-
-	private void orderSelectonSort() {
-
 	}
 	
 	/**

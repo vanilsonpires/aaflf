@@ -13,9 +13,9 @@ package gui;
 public class AAFLF {
 
 	/**
+	 * Construtor inicializado a GUI
 	 * @author Vanilson Pires
 	 * 11 de mar de 2018 2018-03-11
-	 *
 	 * @param args
 	 */
 	public static void main(String[] args) {
