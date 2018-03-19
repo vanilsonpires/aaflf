@@ -50,6 +50,8 @@ public class Engine implements Observer {
 	
 	private TableModel listaEsquerda;
 	private TableModel listaDireita;
+	
+	private static final String SEPARATOR = " ";
 
 	/**
 	 * Construtor padrão
@@ -310,7 +312,7 @@ public class Engine implements Observer {
 				String extensao = getFileExtension(sNomeArquivo);
 				
 				//Faz a verificação para permitir o processamento somente de arquivos em CSV
-				if (extensao.equalsIgnoreCase("csv")) {				
+				if (extensao.equalsIgnoreCase("csv") || extensao.equalsIgnoreCase("txt")) {				
 					
 					InputStream in = new FileInputStream(file); //Cria um stream para manusear os dados do arquivo
 					InputStreamReader isr = new InputStreamReader(in, "UTF-8"); //Especifica o formato em UTF-8
@@ -323,7 +325,7 @@ public class Engine implements Observer {
 					while (s != null) {		
 						qtd++;						
 						if(qtd!=1){
-							String[] dadosDaLinha = s.split(";"); // Separa cada dado da linha em um vetor	
+							String[] dadosDaLinha = s.split(SEPARATOR); // Separa cada dado da linha em um vetor	
 							listaEsquerda.addAll(Arrays.asList(dadosDaLinha)); //Adiciona os arquivos na lista..
 						}
 						s = br.readLine(); // Ler a próxima linha	
