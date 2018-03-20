@@ -73,7 +73,7 @@ public class Gui extends JFrame{
 		jPanel.add(new PanelCenter(), BorderLayout.CENTER); // Add painel do centro
 		jPanel.add(new PainelTopo(), BorderLayout.NORTH); // Add painel do fundo
 		this.add(jPanel, BorderLayout.CENTER);
-		this.add(new PainelBotton(), BorderLayout.SOUTH);
+		this.add(new PainelBottom(), BorderLayout.SOUTH);
 		this.setMinimumSize(new Dimension(1024, 600));
 		
 		UIManager.put("TitledBorder.font", new Font("Arial", Font.BOLD, 17));

@@ -18,6 +18,8 @@ import javax.swing.table.DefaultTableModel;
 public class TableModel extends DefaultTableModel {
 
 	private List<String> list;
+	
+	private String[] colunas = {"Valor"};
 
 	/**
 	 * @author Vanilson Pires 18 de mar de 2018 2018-03-18
@@ -32,7 +34,7 @@ public class TableModel extends DefaultTableModel {
 	}
 	
 	public String getColumnName(int col) {
-        return "";
+        return colunas[col];
     }
 
 	/*
@@ -42,7 +44,7 @@ public class TableModel extends DefaultTableModel {
 	 */
 	@Override
 	public int getColumnCount() {
-		return 1;
+		return colunas.length;
 	}
 	/*
 	 * (non-Javadoc)
@@ -62,6 +64,19 @@ public class TableModel extends DefaultTableModel {
 	@Override
 	public Object getValueAt(int row, int col) {
 		return list.get(row);
+	}
+	
+	/* (non-Javadoc)
+	 * @see javax.swing.table.AbstractTableModel#getColumnClass(int)
+	 */
+	@Override
+	public Class<?> getColumnClass(int col) {
+		switch (col) {
+		case 0:
+			return String.class;
+		default:
+			throw new IndexOutOfBoundsException("col out of bounds");
+		}
 	}
 
 	/*

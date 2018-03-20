@@ -21,7 +21,7 @@ import nucleo.Engine;
  *
  */
 @SuppressWarnings("serial")
-public class PainelBotton extends JPanel {
+public class PainelBottom extends JPanel {
 	
 	/**
 	 * Construtor da classe
@@ -29,7 +29,7 @@ public class PainelBotton extends JPanel {
 	 * 18 de mar de 2018 2018-03-18O
 	 *
 	 */
-	public PainelBotton() {
+	public PainelBottom() {
 		
 		this.setLayout(new BorderLayout());//Seta o layout deste painel
 		JPanel panel = new JPanel(); //Instancia um novo painel
