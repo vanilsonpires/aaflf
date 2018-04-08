@@ -41,8 +41,7 @@ public class Gui extends JFrame{
 	 */
 	public static enum TypeDado{
 		String,
-		Integer,
-		Date
+		Integer
 	}
 	
 	/**

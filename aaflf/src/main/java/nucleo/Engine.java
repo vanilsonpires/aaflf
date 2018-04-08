@@ -13,10 +13,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.text.DecimalFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Date;
+import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -107,6 +106,16 @@ public class Engine implements Observer {
 			case Insertion_Sort:
 				orderInsertionSort();
 				break;
+				
+			case Merge_Sort:
+				statusBar.setText("Processando...");
+				progressBar.setIndeterminate(true);
+				listaDireita.addAll(listaEsquerda.getDados());
+				mergeSort(listaDireita.getDados());
+				statusBar.setText("Pronto");
+				progressBar.setIndeterminate(false);
+				listaDireita.update();
+				break;
 
 			default:
 				throw new Exception(algoritmo.name()+" não implementado") ;
@@ -126,6 +135,7 @@ public class Engine implements Observer {
 	 *
 	 * @throws Exception
 	 */
+	@SuppressWarnings("rawtypes")
 	private void orderInsertionSort() throws Exception {
 		
 		//Altera o texto do status bar
@@ -138,10 +148,10 @@ public class Engine implements Observer {
 		for (int index = 0; index < listaDireita.getDados().size(); index++)  {
 			
 			//Pega o objeto da laçada atual
-			String a = listaDireita.getDados().get(index);  
+			Comparable a = listaDireita.getDados().get(index);  
 			
 			//Inicia a verificação dos demais objetos da lista
-		    for (int j = index - 1; j >= 0 && compareTo(listaDireita.getDados().get(j), a); j--) {
+		    for (int j = index - 1; j >= 0 && compareTo(listaDireita.getDados().get(j), a)==1; j--) {
 		    	
 		    	//Atualiza os objeto na lista
 		    	listaDireita.getDados().set((j + 1), listaDireita.getDados().get(j));  
@@ -165,6 +175,52 @@ public class Engine implements Observer {
 		statusBar.setText("Pronto");
 	}
 	
+    /**
+     * Inicia o algorítmo merge sort
+     * @author Vanilson Pires
+     * 8 de abr de 2018 2018-04-08
+     * @throws Exception
+     */
+    @SuppressWarnings("rawtypes")
+	public void mergeSort(List<Comparable> a) throws Exception {
+		List<Comparable> tmp = new ArrayList<Comparable>();
+		tmp.addAll(a);
+		mergeSort(a, tmp, 0, a.size() - 1);
+	}
+
+	@SuppressWarnings("rawtypes")
+	private void mergeSort(List<Comparable> a, List<Comparable> tmp, int left, int right) throws Exception {
+		if (left < right) {
+			int center = (left + right) / 2;
+			mergeSort(a, tmp, left, center);
+			mergeSort(a, tmp, center + 1, right);
+			merge(a, tmp, left, center + 1, right);
+		}
+	}
+
+	@SuppressWarnings("rawtypes")
+	private void merge(List<Comparable> a, List<Comparable> tmp, int left, int right, int rightEnd) throws Exception {
+		int leftEnd = right - 1;
+		int k = left;
+		int num = rightEnd - left + 1;
+
+		while (left <= leftEnd && right <= rightEnd)
+			if (compareTo(a.get(left), a.get(right))<= 0)
+				tmp.set(k++,a.get(left++));
+			else
+				tmp.set(k++, a.get(right++));
+
+		while (left <= leftEnd) // Copie o resto do primeiro semestre
+			tmp.set(k++, a.get(left++));
+
+		while (right <= rightEnd) // Copie o resto da metade direita
+			tmp.set(k++, a.get(right++));
+
+		// Copiar tmp de volta
+		for (int i = 0; i < num; i++, rightEnd--)
+			a.set(rightEnd, tmp.get(rightEnd));
+	}
+	
 	/**
 	 * Realiza a comparação dos dados
 	 * @author Vanilson Pires
@@ -174,7 +230,17 @@ public class Engine implements Observer {
 	 * @return
 	 * @throws Exception
 	 */
-	private boolean compareTo(String a, String b) throws Exception{
+	/**
+	 * Realiza a comparação dos dados
+	 * @author Vanilson Pires
+	 * 18 de mar de 2018 2018-03-18
+	 * @param a
+	 * @param b
+	 * @return
+	 * @throws Exception
+	 */
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	private int compareTo(Comparable a, Comparable b) throws Exception{
 		
 		//Se for crescente
 		if(ordenacao== Ordenacao.CRESCENTE){
@@ -185,47 +251,14 @@ public class Engine implements Observer {
 			case String:
 				
 				//Compara as strings
-				int resultCompacao = a.compareTo(b);
-				
-				if(resultCompacao==1){
-					//então é maior
-					return true;
-				}else{
-					//então é menor ou igual
-					return false;
-				}
+				return a.compareTo(b);
 
 			case Integer:
 				
-				Integer aI = Integer.valueOf(a.trim()); //a como inteiro
-				Integer bI = Integer.valueOf(b.trim()); //b como inteiro
+				Integer aI = Integer.valueOf(((String) a).trim()); //a como inteiro
+				Integer bI = Integer.valueOf(((String) b).trim()); //b como inteiro
 				
-				resultCompacao = aI.compareTo(bI);
-				
-				if(resultCompacao==1){
-					//então é maior
-					return true;
-				}else{
-					//então é menor ou igual
-					return false;
-				}
-
-			case Date:
-				
-				SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-				
-				Date aD = format.parse( a.trim() ); //a como date
-				Date bD = format.parse( b.trim() ); //b como date
-				
-				resultCompacao = aD.compareTo(bD);
-				
-				if(resultCompacao==1){
-					//então é maior
-					return true;
-				}else{
-					//então é menor ou igual
-					return false;
-				}
+				return aI.compareTo(bI);
 
 			default:
 				throw new Exception(ordenacao.name()+" não implementado") ;
@@ -238,47 +271,30 @@ public class Engine implements Observer {
 
 			case String:
 				
-				int resultCompacao = a.compareTo(b);
+				int retorno = a.compareTo(b);
 				
-				if(resultCompacao==1){
-					//então é maior
-					return false;
-				}else{
-					//então é menor ou igual
-					return true;
-				}
+				if(retorno==1)
+					return -1;
+				
+				if(retorno==-1)
+					return 1;
+				
+				return retorno;
 
 			case Integer:
 				
-				Integer aI = Integer.valueOf(a.trim()); //a como inteiro
-				Integer bI = Integer.valueOf(b.trim());//b como inteiro
+				Integer aI = Integer.valueOf(((String) a).trim()); //a como inteiro
+				Integer bI = Integer.valueOf(((String) b).trim());//b como inteiro
 				
-				resultCompacao = aI.compareTo(bI);
+				retorno = aI.compareTo(bI);
 				
-				if(resultCompacao==1){
-					//então é maior
-					return false;
-				}else{
-					//então é menor ou igual
-					return true;
-				}
-
-			case Date:
+				if(retorno==1)
+					return -1;
 				
-				SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+				if(retorno==-1)
+					return 1;
 				
-				Date aD = format.parse( a.trim() );
-				Date bD = format.parse( b.trim() );
-				
-				resultCompacao = aD.compareTo(bD);
-				
-				if(resultCompacao==1){
-					//então é maior
-					return false;
-				}else{
-					//então é menor ou igual
-					return true;
-				}
+				return retorno;
 
 			default:
 				throw new Exception(ordenacao.name()+" não implementado") ;

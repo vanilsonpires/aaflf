@@ -17,7 +17,7 @@ import javax.swing.table.DefaultTableModel;
 @SuppressWarnings("serial")
 public class TableModel extends DefaultTableModel {
 
-	private List<String> list;
+	private List<Comparable> list;
 	
 	private String[] colunas = {"Valor"};
 
@@ -25,7 +25,7 @@ public class TableModel extends DefaultTableModel {
 	 * @author Vanilson Pires 18 de mar de 2018 2018-03-18
 	 *
 	 */
-	public TableModel(List<String> list) {
+	public TableModel(List<Comparable> list) {
 		
 		if(list==null)
 			list = new ArrayList<>();
@@ -89,7 +89,7 @@ public class TableModel extends DefaultTableModel {
 		return false;
 	}
 
-	public void setValueAt(String value, int row, int col) {
+	public void setValueAt(Comparable value, int row, int col) {
 		list.set(row, value);
 	}
 	
@@ -98,7 +98,7 @@ public class TableModel extends DefaultTableModel {
 		fireTableRowsInserted(list.size(), list.size());
 	}
 	
-	public void addAll(List<String> value){
+	public void addAll(List<Comparable> value){
 		list.addAll(value);
 		fireTableRowsInserted(list.size(), list.size());
 	}
@@ -107,7 +107,7 @@ public class TableModel extends DefaultTableModel {
 		fireTableStructureChanged();
 	}
 	
-	public List<String> getDados(){
+	public List<Comparable> getDados(){
 		return list;
 	}
 	
