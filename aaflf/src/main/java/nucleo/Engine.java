@@ -116,6 +116,16 @@ public class Engine implements Observer {
 				progressBar.setIndeterminate(false);
 				listaDireita.update();
 				break;
+				
+			case Selection_Sort:
+				statusBar.setText("Processando...");
+				progressBar.setIndeterminate(true);
+				listaDireita.addAll(listaEsquerda.getDados());
+				selectionSort(listaDireita.getDados());
+				statusBar.setText("Pronto");
+				progressBar.setIndeterminate(false);
+				listaDireita.update();
+				break;
 
 			default:
 				throw new Exception(algoritmo.name()+" não implementado") ;
@@ -151,7 +161,7 @@ public class Engine implements Observer {
 			Comparable a = listaDireita.getDados().get(index);  
 			
 			//Inicia a verificação dos demais objetos da lista
-		    for (int j = index - 1; j >= 0 && compareTo(listaDireita.getDados().get(j), a)==1; j--) {
+		    for (int j = index - 1; j > 0 && compareTo(listaDireita.getDados().get(j), a)==1; j--) {
 		    	
 		    	//Atualiza os objeto na lista
 		    	listaDireita.getDados().set((j + 1), listaDireita.getDados().get(j));  
@@ -221,15 +231,26 @@ public class Engine implements Observer {
 			a.set(rightEnd, tmp.get(rightEnd));
 	}
 	
-	/**
-	 * Realiza a comparação dos dados
-	 * @author Vanilson Pires
-	 * 18 de mar de 2018 2018-03-18
-	 * @param a
-	 * @param b
-	 * @return
-	 * @throws Exception
-	 */
+
+	public void selectionSort(List<Comparable> a) throws Exception {
+		int out, in, min;
+		for (out = 0; out < a.size() - 1; out++) // laço externo
+		{
+			min = out; // mínimo
+			for (in = out + 1; in < a.size(); in++)
+				// laço interno
+				if (compareTo(a.get(in), a.get(min)) == -1) // se min maior,
+					min = in; // um novo min
+			swap(a, out, min); // trocá-los
+		}
+	}
+
+	private void swap(List<Comparable> list, int one, int two) {
+		Comparable temp = list.get(one);
+		list.set(one, list.get(two));
+		list.set(two, temp);
+	}	
+	
 	/**
 	 * Realiza a comparação dos dados
 	 * @author Vanilson Pires

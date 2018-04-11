@@ -27,7 +27,7 @@ public class Cronometro extends Observable implements Runnable{
 	 * @date 2018-03-04
 	 */
 	public Cronometro() {   
-        this.timer = "00:00:00:0000";   
+        this.timer = "00:00:00";   
         this.zerado = true;
         this.runing = false;
     }
@@ -102,11 +102,12 @@ public class Cronometro extends Observable implements Runnable{
 						milessegundos=0;
 					}
 					
-					milessegundos++;
+					milessegundos=+999;
 					setTimer(completaComZero(hora) + ":" + completaComZero(minuto) + ":"
-							+ completaComZero(segundo)+ ":"+ completaComZeroMills(milessegundos));
+							+ completaComZero(segundo));
+					
+					wait(1000L);// aguardando 1 milisegundos
 				}
-				wait(1L);// aguardando 1 milisegundos
 			}
 			executor = null;
 		} catch (InterruptedException ex) {
